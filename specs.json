@@ -1,0 +1,67 @@
+{
+  "specs": [
+    {
+      "title": "The did:ng DID Method - v0.1 (Editors Draft)",
+      "spec_directory": "./spec",
+      "markdown_paths": [
+        "header.md",
+        "abstract.md",
+        "overview.md",
+        "did_method_identifier.md",
+        "did_method_operations.md",
+        "security_and_privacy.md",
+        "definitions.md",
+        "references.md",
+        "version.md"
+      ],
+      "source": {
+        "host": "github",
+        "account": "peacekeeper",
+        "repo": "did-ng-spec"
+      },
+      "output_path": "./docs",
+      "logo": "https://raw.githubusercontent.com/peacekeeper/did-ng-spec/refs/heads/main/images/nextgraph.jpg",
+      "logo_link": "https://github.com/peacekeeper/did-ng-spec",
+      "katex": true,
+      "external_specs": [
+        {
+          "multiformats": {
+            "href": "https://datatracker.ietf.org/doc/draft-multiformats-multibase/08/",
+            "title": "Multiformats",
+            "rawDate": "2024-02-21",
+            "authors": [
+              "Juan Benet",
+              "Manu Sporny"
+            ],
+            "status": "Internet Draft"
+          }
+        },
+        {
+          "DID-REGISTRATION": {
+            "href": "https://identity.foundation/did-registration/",
+            "title": "DID Registration",
+            "rawDate": "2025-05-19",
+            "authors": [
+              "Markus Sabadello",
+              "Cihan Saglam",
+              "Ahamed Azeem"
+            ],
+            "status": "Draft"
+          }
+        },
+        {
+          "DID-RESOLUTION": {
+            "href": "https://www.w3.org/TR/did-resolution/",
+            "title": "DID Resolution",
+            "rawDate": "2025-04-23",
+            "authors": [
+              "Markus Sabadello",
+              "Dmitri Zagidulin"
+            ],
+            "status": "Working Draft"
+          }
+        }
+      ]
+    }
+  ]
+}

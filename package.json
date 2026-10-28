@@ -1,0 +1,26 @@
+{
+  "name": "didng",
+  "version": "1.0.0",
+  "description": "The did:ng DID Method",
+  "main": "index.js",
+  "scripts": {
+    "edit": "node -e \"require('spec-up')()\"",
+    "render": "node -e \"require('spec-up')({ nowatch: true })\"",
+    "dev": "node -e \"require('spec-up')({ dev: true })\""
+  },
+  "keywords": [
+    "decentralized identifier",
+    "DID",
+    "Nextgraph",
+    "ELFA"
+  ],
+  "author": "Markus Sabadello",
+  "license": "none",
+  "bugs": {
+    "url": "https://github.com/peacekeeper/did-ng-spec/issues"
+  },
+  "homepage": "https://peacekeeper.github.io/did-ng-spec/",
+  "dependencies": {
+    "spec-up": "github:brianorwhatever/spec-up#master"
+  }
+}
