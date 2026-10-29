@@ -251,11 +251,12 @@ in the resolved DID document.</p>
 <span class="token punctuation">}</span>
 </code></pre>
 <h3 id="update-rotate"><a class="toc-anchor" href="#update-rotate" >§</a> Update (Rotate)</h3>
-<p>The <code>did:ng</code> method does not support updates. When document or other objects in the graph
-change, new DIDs are created.</p>
+<p>The resources identified using <code>did:ng</code> (such as Nextgraph documents) can change, however this
+does not constitute an update as defined by DID specifications. The DID documents themselves
+are not updated. When identifiers with new cryptographic keys are needed, new DIDs are created
+rather than updating existing ones.</p>
 <h3 id="deactivate-revoke"><a class="toc-anchor" href="#deactivate-revoke" >§</a> Deactivate (Revoke)</h3>
-<p>The <code>did:ng</code> method does not support deactivation. When document or other objects in the graph
-change, new DIDs are created.</p>
+<p>The <code>did:ng</code> method does not support deactivation.</p>
 <h2 id="security-and-privacy-considerations"><a class="toc-anchor" href="#security-and-privacy-considerations" >§</a> Security and Privacy Considerations</h2>
 <p>TODO</p>
 <h2 id="definitions"><a class="toc-anchor" href="#definitions" >§</a> Definitions</h2>

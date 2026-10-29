@@ -95,10 +95,11 @@ HTTP GET to https://uniresolver.io/1.0/identifiers/did:ng:o:t9BlAm27i3IPG0a7GQzi
 
 ### Update (Rotate)
 
-The `did:ng` method does not support updates. When document or other objects in the graph
-change, new DIDs are created.
+The resources identified using `did:ng` (such as Nextgraph documents) can change, however this
+does not constitute an update as defined by DID specifications. The DID documents themselves
+are not updated. When identifiers with new cryptographic keys are needed, new DIDs are created
+rather than updating existing ones.
 
 ### Deactivate (Revoke)
 
-The `did:ng` method does not support deactivation. When document or other objects in the graph
-change, new DIDs are created.
+The `did:ng` method does not support deactivation.
