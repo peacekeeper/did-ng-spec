@@ -41,7 +41,7 @@ The syntax is specified in the following Augmented Backus-Naur Form (ABNF) notat
 
 ```abnf
 ng-did = "did:ng:" variant-id ":" variant-data *( ":" variant-id ":" variant-data )
-variant-id = "a" "b" "g" "o" ...
+variant-id = "a" / "b" / "g" / "o" / ...
 variant-data = pubkey / symkey / digest
 pubkey = versioned-byte-array
 symkey = versioned-byte-array
