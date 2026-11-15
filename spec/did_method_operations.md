@@ -41,13 +41,13 @@ specific types of resources in graph, and they carry semantics about these resou
 the identifier itself. During resolution, this is reflected by including a `type` property
 in the resolved DID document.
 
-**Example Request to resolve a DID over HTTPS binding, with `did:ng:i` variant identifier:**
+**Example DID with `did:ng:i` variant identifier:**
 
 ```
-HTTP GET to https://uniresolver.io/1.0/identifiers/did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
+did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
 ```
 
-**Example Response:**
+**Example DID document:**
 
 ```json
 {
@@ -74,13 +74,19 @@ HTTP GET to https://uniresolver.io/1.0/identifiers/did:ng:a:rjoQTS4LMBDcuh8CEjmT
 }
 ```
 
-**Example Request to resolve a DID over HTTPS binding, with `did:ng:o` variant identifier:**
+**Example DID with `did:ng:o` variant identifier:** (note: newlines are for display purposes only, the DID is one continuous string)
 
 ```
-HTTP GET to https://uniresolver.io/1.0/identifiers/did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA:v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA:c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA:k:BIKTgk0WoYR6zyDWWw0770b9WdKY3zuqdWQcsyVmgMAA:s:-Q_t0a_p3v6hoMCu3fn83FAUD14w04xPEYnSf3Fv8hQA:k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA:l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
+did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA
+    :v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA
+    :c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA
+    :k:BIKTgk0WoYR6zyDWWw0770b9WdKY3zuqdWQcsyVmgMAA
+    :s:-Q_t0a_p3v6hoMCu3fn83FAUD14w04xPEYnSf3Fv8hQA
+    :k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA
+    :l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
 ```
 
-**Example Response:**
+**Example DID document:**
 
 ```json
 {
