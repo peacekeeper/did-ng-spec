@@ -54,23 +54,23 @@ base64url-char  = ALPHA / DIGIT / "-" / "_"
 
 The following table lists common variants of DIDs:
 
-| Variant identifier | Variant data | Meaning         |
-|--------------------|--------------|-----------------|
-| `did:ng:i:`          | [user-id]    | User Identity   |
-| `did:ng:o:`          | [repo-id]    | Document        |
-| `did:ng:a:`          | [repo-id]    | Public Store    |
-| `did:ng:b:`          | [repo-id]    | Protected Store |
-| `did:ng:c:`          | [repo-id]    | Private Store   |
-| `did:ng:g:`          | [repo-id]    | Group Store     |
-| `did:ng:j:`          | [object-id]    | Binary file        |
-| `did:ng:c:`          | [commit-id]    | Commit         |
-| `did:ng:v:`          | [overlay-id] | Overlay         |
-| `did:ng:l:`          | [locator]    | Locator         |
-| `did:ng:y:`          | [topic-id]    | Topic         |
-| `did:ng:k:`          | [key]    | Key         |
-| `did:ng:r:`          | [read-cap]    | Read Capability         |
-| `did:ng:n:`          | [read-token]    | Read Token         |
-| `did:ng:s:`          | [perma-cap] | Permanent Capability         |
+| Variant Identifier | Variant-Specific Data | Meaning         |
+|--------------------|---------------------|----------------------------|
+| `i`| [user-id]    | User Identity   |
+| `o`| [repo-id]    | Document        |
+| `a`| [repo-id]    | Public Store    |
+| `b`| [repo-id]    | Protected Store |
+| `c`| [repo-id]    | Private Store   |
+| `g`| [repo-id]    | Group Store     |
+| `j`| [object-id]    | Binary file        |
+| `c`| [commit-id]    | Commit         |
+| `v`| [overlay-id] | Overlay         |
+| `l`| [locator]    | Locator         |
+| `y`| [topic-id]    | Topic         |
+| `k`| [key]    | Key         |
+| `r`| [read-cap]    | Read Capability         |
+| `n`| [read-token]    | Read Token         |
+| `s`| [perma-cap] | Permanent Capability         |
 
 ::: note Variant Semantics
 The variant identifier not only indicates the content of the variant-specific data
@@ -111,15 +111,18 @@ user-id = pubkey
 repo-id = pubkey
 commit-id = digest
 object-id = digest
+overlay-id = digest
+locator = byte-array
 topic-id = digest
 commit-key = symkey
 read-cap = pubkey-and-digest
 read-token = digest
-permap-cap = 1*base64url-char
+permap-cap = byte-array
 pubkey = 44base64url-char
 symkey = 44base64url-char
 digest = 44base64url-char
 pubkey-and-digest = 87base64url-char
+byte-array = 1*base64url-char
 base64url-char  = ALPHA / DIGIT / "-" / "_"
 ```
 
