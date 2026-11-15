@@ -2,27 +2,33 @@
 
 ### Create (Register)
 
-#### Creating a `did:ng`
+DIDs are created implicitly when various concepts and objects in the Nextgraph
+architecture and protocol are created, such as user identities, documents, etc.
 
-To create a `did:ng`, the controller first generates a private/public key pair that controls the DID.
-The public key is included as a verification method in the initial version of the DID document.
+To create a Nextgraph DID, the following algorithm can be used. It takes as input a list
+of tuples, each consisting of a **variant identifier** (`variant-id`) and
+**variant-specific data** (`variant-data`). This list must contain at least one tuple.
 
-DIDs are usually created implicitly, e.g. when creating a new document.
+1. Initialize a string named *ng-did* with value `did:ng`.
+1. For each tuple in the list:
+   1. Append `:` to *ng-did*.
+   1. Append the `variant-id` to *ng-did*.
+   1. Append `:` to *ng-did*.
+   1. Initialize a byte array *versioned-byte-array* containing `variant-data`.
+   1. Preprend the byte `0x00` to *versioned-byte-array*.
+   1. Reverse the byte array *versioned-byte-array*.
+   1. Encode *versioned-byte-array* using Base64URL-encoding ([[spec:rfc4648]]) and append the result to *ng-did*.
+1. Return *ng-did*.
 
-**Example initial DID document:**
+**Example:**
 
-```json
-{
-   "@context": [
-      "https://www.w3.org/ns/did/v1.1"
-   ],
-   "id": "did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA",
-   "verificationMethod": [{
-   }]
-}
-```
+Given the following list of tuples:
 
-**Example DID:**
+| Variant Identifier | Variant-Specific data |
+|--------------------|---------------------|
+| `a`          | 48 0D 90 4B 3C B2 AA 80 9C 0D 06 29 E0 2D 00 B8 62 93 39 12 02 1F BA DC 10 30 0B 2E 4D 10 3A AE    |
+
+The resulting DID is:
 
 ```
 did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
@@ -41,7 +47,7 @@ specific types of resources in graph, and they carry semantics about these resou
 the identifier itself. During resolution, this is reflected by including a `type` property
 in the resolved DID document.
 
-**Example DID with `did:ng:i` variant identifier:**
+**Example DID with `did:ng:a` variant identifier:**
 
 ```
 did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
