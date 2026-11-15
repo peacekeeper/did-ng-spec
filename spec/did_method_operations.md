@@ -54,7 +54,7 @@ For more information about Nextgraph documents, see https://docs.nextgraph.org/e
 
 The following rules apply when resolving a `did:ng` DID to a DID document:
 
-1. The value of the `@context` property MUST be the string `https://www.w3.org/ns/did/v1.1`.
+1. The value of the `@context` property MUST be a list containing the single string `https://www.w3.org/ns/did/v1.1`.
 1. The value of the `id` property MUST be the DID that is being resolved.
 1. The `controller` property MUST NOT be present.
 1. Add a `type` property with a string value corresponding to the table of common variants in [Method-Specific Identifier](#method-specific-identifier).
@@ -77,12 +77,12 @@ The following rules apply when resolving a `did:ng` DID to a DID document:
          1. The verification relationship MUST reference the `#key-1` verification method.
 
 ::: todo
-Fix reference to multibase/multicodec spec, and provide more details.
+Add more information about the value of the `type` property, and potentially additional
+properties to be added to the DID document depending on the variant.
 :::
 
 ::: todo
-Add more information about the value of the `type` property, and potentially additional
-properties to be added to the DID document depending on the variant.
+Fix reference to multibase/multicodec spec, and provide more details.
 :::
 
 ::: note Identifier Semantics

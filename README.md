@@ -18,7 +18,7 @@ with the following design goals and properties:
 
 - TODO
 
-## Acknowledgement
+## Acknowledgements
 
 <img align="left" src="https://github.com/peacekeeper/did-ng-spec/blob/main/images/EN%20Co-funded%20by%20the%20EU_POS.jpg" width="250">
 
