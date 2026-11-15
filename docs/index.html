@@ -112,7 +112,7 @@ base64-url strings.</p>
 high level, but leaves parsing and processing of specific variants to the application.
 This ABNF notation is expected to be stable in the long term, even when variants are added
 over time:</p>
-<pre class="language-abnf"><code class="language-abnf"><span class="token definition keyword">ng-did</span> <span class="token operator">=</span> <span class="token string">"did:ng:"</span> <span class="token rule">variant</span> <span class="token repetition operator">*</span><span class="token punctuation">(</span> <span class="token string">":"</span> <span class="token rule">variant-data</span> <span class="token punctuation">)</span>
+<pre class="language-abnf"><code class="language-abnf"><span class="token definition keyword">ng-did</span> <span class="token operator">=</span> <span class="token string">"did:ng:"</span> <span class="token rule">variant</span> <span class="token repetition operator">*</span><span class="token punctuation">(</span> <span class="token string">":"</span> <span class="token rule">variant</span> <span class="token punctuation">)</span>
 <span class="token definition keyword">variant</span> <span class="token operator">=</span> <span class="token rule">variant-id</span> <span class="token string">":"</span> <span class="token rule">variant-data</span>
 <span class="token definition keyword">variant-id</span> <span class="token operator">=</span> <span class="token rule">lower-char</span>
 <span class="token definition keyword">variant-data</span> <span class="token operator">=</span> <span class="token rule">versioned-byte-array</span>
@@ -207,6 +207,8 @@ over time:</p>
 </tr>
 </tbody>
 </table>
+<div id="todo-94" class="notice todo"><a class="notice-link" href="#todo-94">TODO</a><p>Add a column with the actual data type, e.g. pubkey, symkey, digest.</p>
+</div>
 <div id="variant-semantics" class="notice note"><a class="notice-link" href="#variant-semantics">NOTE</a><p>The variant identifier not only indicates the content of the variant-specific data
 and subsequent structure of the identifier, but also carries semantics about the resource
 that is being identified. For example, a DID starting with <code>:g:</code> always
@@ -229,7 +231,7 @@ and expresses details of all currently known variants:</p>
 <span class="token definition keyword">variant-c</span> <span class="token operator">=</span> <span class="token string">"c"</span> <span class="token string">":"</span> <span class="token punctuation">(</span> <span class="token rule">repo-id</span> <span class="token operator">/</span> <span class="token rule">commit-id</span> <span class="token punctuation">)</span> 
 <span class="token definition keyword">variant-g</span> <span class="token operator">=</span> <span class="token string">"g"</span> <span class="token string">":"</span> <span class="token rule">repo-id</span>
 <span class="token definition keyword">variant-j</span> <span class="token operator">=</span> <span class="token string">"j"</span> <span class="token string">":"</span> <span class="token rule">object-id</span>
-<span class="token definition keyword">variant-v</span> <span class="token operator">=</span> <span class="token string">"v"</span> <span class="token string">":"</span> <span class="token rule">overlay-id</span>
+<span class="token definition keyword">variant-v</span> <span class="token operator">=</span> <span class="token string">"v"</span> <span class="token string">":"</span> <span class="token rule">overlay-id</span>#<span class="token rule">method-specific-identifier</span>
 <span class="token definition keyword">variant-l</span> <span class="token operator">=</span> <span class="token string">"l"</span> <span class="token string">":"</span> <span class="token rule">locator</span>
 <span class="token definition keyword">variant-y</span> <span class="token operator">=</span> <span class="token string">"y"</span> <span class="token string">":"</span> <span class="token rule">topic-id</span>
 <span class="token definition keyword">variant-k</span> <span class="token operator">=</span> <span class="token string">"k"</span> <span class="token string">":"</span> <span class="token rule">commit-key</span>
@@ -294,7 +296,8 @@ of tuples, each consisting of a <strong>variant identifier</strong> (<code>varia
 </li>
 <li>Return <em>ng-did</em>.</li>
 </ol>
-<p><strong>Example:</strong></p>
+<h4 id="examples"><a class="toc-anchor" href="#examples" >§</a> Examples</h4>
+<p><strong>Example 1: Single variant (Public Store)</strong></p>
 <p>Given the following list of tuples:</p>
 <table>
 <thead>
@@ -306,37 +309,87 @@ of tuples, each consisting of a <strong>variant identifier</strong> (<code>varia
 <tbody>
 <tr>
 <td><code>a</code></td>
-<td>48 0D 90 4B 3C B2 AA 80 9C 0D 06 29 E0 2D 00 B8 62 93 39 12 02 1F BA DC 10 30 0B 2E 4D 10 3A AE</td>
+<td><code>48 0D 90 4B 3C B2 AA 80 9C 0D 06 29 E0 2D 00 B8</code><br/><code>62 93 39 12 02 1F BA DC 10 30 0B 2E 4D 10 3A AE</code></td>
 </tr>
 </tbody>
 </table>
 <p>The resulting DID is:</p>
 <pre><code>did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
 </code></pre>
+<p><strong>Example 2: Multiple variants</strong></p>
+<div id="todo-95" class="notice todo"><a class="notice-link" href="#todo-95">TODO</a><p>Add more complex examples using a sequence of variants.</p>
+</div>
 <h3 id="read-resolve"><a class="toc-anchor" href="#read-resolve" >§</a> Read (Resolve)</h3>
-<p>To resolve a <code>did:ng</code>, the <a path-0="www.w3.org"path-1="TR"path-2="did-resolution"path-3="#resolving"href="https://www.w3.org/TR/did-resolution/#resolving" ><code>resolve</code> function</a> of the
+<p>To resolve a <code>did:ng</code>, the <a path-0="www.w3.org"path-1="TR"path-2="did-resolution"path-3="#resolving"href="https://www.w3.org/TR/did-resolution/#resolving" ><code>resolve()</code> function</a> of the
 W3C [<a class="spec-reference" href="#ref:DID-RESOLUTION">DID-RESOLUTION</a>] specification is used.</p>
-<p>Note: A DID document is not the same as a Nextgraph document.</p>
-<p>DIDs using the <code>did:ng</code> method are not only used for discovering cryptographic verification
+<div id="nextgraph-documents" class="notice note"><a class="notice-link" href="#nextgraph-documents">NOTE</a><p>A DID document is not the same as a Nextgraph document.
+For more information about Nextgraph documents, see <a path-0="docs.nextgraph.org"path-1="en"path-2="documents"path-3=""href="https://docs.nextgraph.org/en/documents/" ><span>https://docs.nextgraph.org/en/documents/</span></a>.</p>
+</div>
+<p>The following rules apply when resolving a <code>did:ng</code> DID to a DID document:</p>
+<ol>
+<li>The value of the <code>@context</code> property MUST be the string <code>https://www.w3.org/ns/did/v1.1</code>.</li>
+<li>The value of the <code>id</code> property MUST be the DID that is being resolved.</li>
+<li>The <code>controller</code> property MUST NOT be present.</li>
+<li>Add a <code>type</code> property with a string value corresponding to the table of common variants in <a href="#method-specific-identifier" >Method-Specific Identifier</a>.</li>
+<li>Parse the DID using the ABNF notation specified in <a href="#method-specific-identifier" >Method-Specific Identifier</a> to
+determine the list of tuples, each consisting of a <strong>variant identifier</strong> and <strong>variant-specific data</strong>.</li>
+<li>For the first tuple in the list, use the table of common variants in <a href="#method-specific-identifier" >Method-Specific Identifier</a>
+to determine if the <strong>variant-specific data</strong> is a public key.
+<ol>
+<li>If yes,
+<ol>
+<li>Add a <a path-0="www.w3.org"path-1="TR"path-2="cid-1.0"path-3="#verification-methods"href="https://www.w3.org/TR/cid-1.0/#verification-methods" >verification method</a> to the DID document.
+<ol>
+<li>The value of the <code>id</code> property MUST be the DID that is being resolved followed by the string <code>#key-1</code>.</li>
+<li>The value of the <code>type</code> property MUST be the string <code>Multikey</code>.</li>
+<li>The value of the <code>controller</code> property MUST be the DID that is being resolved.</li>
+<li>The value of the <code>publicKeyMultibase</code> property MUST be the <strong>variant-specific data</strong>,
+encoded using [[multicodec]].</li>
+</ol>
+</li>
+<li>Add a <a path-0="www.w3.org"path-1="TR"path-2="cid-1.0"path-3="#verification-relationships"href="https://www.w3.org/TR/cid-1.0/#verification-relationships" >verification relationship</a> to the DID document.
+<ol>
+<li>The verification relationship MUST be <code>assertionMethod</code>.</li>
+<li>The verification relationship MUST reference the <code>#key-1</code> verification method.</li>
+</ol>
+</li>
+<li>If the <strong>variant identifier</strong> equals <code>i</code>, add an additional <a path-0="www.w3.org"path-1="TR"path-2="cid-1.0"path-3="#verification-relationships"href="https://www.w3.org/TR/cid-1.0/#verification-relationships" >verification relationship</a> to the DID document.
+<ol>
+<li>The verification relationship MUST be <code>authentication</code>.</li>
+<li>The verification relationship MUST reference the <code>#key-1</code> verification method.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<div id="todo-96" class="notice todo"><a class="notice-link" href="#todo-96">TODO</a><p>Fix reference to multibase/multicodec spec, and provide more details.</p>
+</div>
+<div id="todo-97" class="notice todo"><a class="notice-link" href="#todo-97">TODO</a><p>Add more information about the value of the <code>type</code> property, and potentially additional
+properties to be added to the DID document depending on the variant.</p>
+</div>
+<div id="identifier-semantics" class="notice note"><a class="notice-link" href="#identifier-semantics">NOTE</a><p>DIDs using the <code>did:ng</code> method are not only used for discovering cryptographic verification
 methods and other technical metadata about a subject, they also directly identify
 specific types of resources in graph, and they carry semantics about these resources within
 the identifier itself. During resolution, this is reflected by including a <code>type</code> property
 in the resolved DID document.</p>
-<p><strong>Example DID with <code>did:ng:a</code> variant identifier:</strong></p>
+</div>
+<h4 id="examples-2"><a class="toc-anchor" href="#examples-2" >§</a> Examples</h4>
+<p><strong>Example 1: DID with <code>did:ng:a</code> variant identifier:</strong></p>
 <pre><code>did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
 </code></pre>
-<p><strong>Example DID document:</strong></p>
+<p>Resolved DID document:</p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"@context"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"https://www.w3.org/ns/did/v1"</span><span class="token punctuation">,</span>
-    <span class="token string">"https://w3id.org/security/suites/ed25519-2020/v1"</span>
+    <span class="token string">"https://www.w3.org/ns/did/v1.1"</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA"</span><span class="token punctuation">,</span>
   <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"ProtectedStore"</span><span class="token punctuation">,</span>
   <span class="token property">"verificationMethod"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA#key-1"</span><span class="token punctuation">,</span>
-      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Ed25519VerificationKey2020"</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Multikey"</span><span class="token punctuation">,</span>
       <span class="token property">"controller"</span><span class="token operator">:</span> <span class="token string">"did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA"</span><span class="token punctuation">,</span>
       <span class="token property">"publicKeyMultibase"</span><span class="token operator">:</span> <span class="token string">"z6MkExamplePublicKeyMaterial"</span>
     <span class="token punctuation">}</span>
@@ -349,7 +402,10 @@ in the resolved DID document.</p>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><strong>Example DID with <code>did:ng:o</code> variant identifier:</strong> (note: newlines are for display purposes only, the DID is one continuous string)</p>
+<div id="todo-98" class="notice todo"><a class="notice-link" href="#todo-98">TODO</a><p>Update above example to contain correct <code>publicKeyMultibase</code> value
+that actually corresponds to the method-specific identifier.</p>
+</div>
+<p><strong>Example 2: DID with <code>did:ng:o</code> variant identifier:</strong> (note: newlines are for display purposes only, the DID is one continuous string)</p>
 <pre><code>did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA
     :v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA
     :c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA
@@ -358,7 +414,7 @@ in the resolved DID document.</p>
     :k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA
     :l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
 </code></pre>
-<p><strong>Example DID document:</strong></p>
+<p>Resolved DID document:</p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"@context"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"https://www.w3.org/ns/did/v1"</span><span class="token punctuation">,</span>
@@ -581,8 +637,16 @@ in this specification as permitted.</dd>
 </li>
 <li><a href="#did-method-operations" >DID Method Operations</a>
 <ul>
-<li><a href="#create-register" >Create (Register)</a></li>
-<li><a href="#read-resolve" >Read (Resolve)</a></li>
+<li><a href="#create-register" >Create (Register)</a>
+<ul>
+<li><a href="#examples" >Examples</a></li>
+</ul>
+</li>
+<li><a href="#read-resolve" >Read (Resolve)</a>
+<ul>
+<li><a href="#examples-2" >Examples</a></li>
+</ul>
+</li>
 <li><a href="#update-rotate" >Update (Rotate)</a></li>
 <li><a href="#deactivate-revoke" >Deactivate (Revoke)</a></li>
 </ul>

@@ -45,7 +45,7 @@ This ABNF notation is expected to be stable in the long term, even when variants
 over time:
 
 ```abnf
-ng-did = "did:ng:" variant *( ":" variant-data )
+ng-did = "did:ng:" variant *( ":" variant )
 variant = variant-id ":" variant-data
 variant-id = lower-char
 variant-data = versioned-byte-array
@@ -73,6 +73,10 @@ The following table lists common variants of DIDs:
 | `r`| [read-cap]    | Read Capability         |
 | `n`| [read-token]    | Read Token         |
 | `s`| [perma-cap] | Permanent Capability         |
+
+::: todo
+Add a column with the actual data type, e.g. pubkey, symkey, digest.
+:::
 
 ::: note Variant Semantics
 The variant identifier not only indicates the content of the variant-specific data
@@ -102,7 +106,7 @@ variant-b = "b" ":" repo-id
 variant-c = "c" ":" ( repo-id / commit-id ) 
 variant-g = "g" ":" repo-id
 variant-j = "j" ":" object-id
-variant-v = "v" ":" overlay-id
+variant-v = "v" ":" overlay-id#method-specific-identifier
 variant-l = "l" ":" locator
 variant-y = "y" ":" topic-id
 variant-k = "k" ":" commit-key
