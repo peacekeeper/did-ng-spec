@@ -24,8 +24,8 @@ specified below.
 
 The `did:ng` method-specific identifier supports different variants for identifying
 a range of resources within Nextgraph. It is prefixed by a 
-**variant identifier**, separated by a colon character, and followed by **variant-specific
-data**. In some cases, this pair of variant identifier plus variant-specific data can
+**variant identifier** (`variant-id`), separated by a `:` colon character, and followed by **variant-specific
+data** (`variant-data`). In some cases, this pair of variant identifier plus variant-specific data can
 be repeated to form a sequence, where a subsequent pair of variant identifier and
 variant-specific data refines or qualifies the previous pair.
 
@@ -36,37 +36,95 @@ The **variant-specific data** depends on the variant identifier. It often consis
 which is zero at the moment. The byte array is reversed and encoded as
 base64-url strings.
 
-The syntax is specified in the following Augmented Backus-Naur Form (ABNF) notation
-[[spec:rfc2234]]:
+The syntax is specified in two ways, using the Augmented Backus-Naur Form (ABNF) notation
+[[spec:rfc2234]].
+
+The first notation is a simplified syntax that expresses the concept of variants on a
+high level, but leaves parsing and processing of specific variants to the application.
+This ABNF notation is expected to be stable in the long term, even when variants are added
+over time:
 
 ```abnf
 ng-did = "did:ng:" variant-id ":" variant-data *( ":" variant-id ":" variant-data )
-variant-id = "a" / "b" / "g" / "o" / ...
-variant-data = pubkey / symkey / digest
-pubkey = versioned-byte-array
-symkey = versioned-byte-array
-digest = versioned-byte-array
-versioned-byte-array = 44base64url-char
+variant-id = "a" / "b" / "c" / "g" / "o" / ...
+variant-data = versioned-byte-array
+versioned-byte-array = 1*base64url-char
 base64url-char  = ALPHA / DIGIT / "-" / "_"
 ```
 
-The variant identifier not only indicates the content of the variant-specific data
-and subsequent structure of the identifier, but also carries semantics about the resource
-that is being identified. This is unusual for DID methods, but fully conformant with
-the W3C DID Core standard.
-
-List of common variants of DIDs:
+The following table lists common variants of DIDs:
 
 | Variant identifier | Variant data | Meaning         |
 |--------------------|--------------|-----------------|
-| did:ng:i:          | [user-id]    | User Identity   |
-| did:ng:o:          | [repo-id]    | Document        |
-| did:ng:v:          | [overlay-id] | Overlay         |
-| did:ng:l:          | [locator]    | Locator         |
-| did:ng:a:          | [repo-id]    | Public Store    |
-| did:ng:b:          | [repo-id]    | Protected Store |
-| did:ng:c:          | [repo-id]    | Private Store   |
-| did:ng:g:          | [repo-id]    | Group Store     |
+| `did:ng:i:`          | [user-id]    | User Identity   |
+| `did:ng:o:`          | [repo-id]    | Document        |
+| `did:ng:a:`          | [repo-id]    | Public Store    |
+| `did:ng:b:`          | [repo-id]    | Protected Store |
+| `did:ng:c:`          | [repo-id]    | Private Store   |
+| `did:ng:g:`          | [repo-id]    | Group Store     |
+| `did:ng:j:`          | [object-id]    | Binary file        |
+| `did:ng:c:`          | [commit-id]    | Commit         |
+| `did:ng:v:`          | [overlay-id] | Overlay         |
+| `did:ng:l:`          | [locator]    | Locator         |
+| `did:ng:y:`          | [topic-id]    | Topic         |
+| `did:ng:k:`          | [key]    | Key         |
+| `did:ng:r:`          | [read-cap]    | Read Capability         |
+| `did:ng:n:`          | [read-token]    | Read Token         |
+| `did:ng:s:`          | [perma-cap] | Permanent Capability         |
+
+::: note Variant Semantics
+The variant identifier not only indicates the content of the variant-specific data
+and subsequent structure of the identifier, but also carries semantics about the resource
+that is being identified. For example, a DID starting with `:g:` always
+identifies a Group Store.
+This is unusual for DID methods, but fully conformant with the W3C DID Core standard.
+:::
+
+::: note Different Meanings of Variants
+In a sequence of variants, variant identifiers may have different meanings depending
+on where in the sequence they appear. For example, `:c:` can mean "Private Store", but also
+"Commit".
+:::
+
+A second ABNF notation is provided which is an expanded version of the first ABNF notation
+and expresses details of all currently known variants:
+
+```abnf
+ng-did = "did:ng:" variant *( ":" variant )
+variant = variant-i / variant-o / variant-a / variant-b / variant-c / variant-g / variant-j /
+          variant-v / variant-l / variant-y / variant-k / variant-r / variant-n / variant-s
+variant-i = "i" ":" user-id
+variant-o = "o" ":" repo-id
+variant-a = "a" ":" repo-id
+variant-b = "b" ":" repo-id
+variant-c = "c" ":" ( repo-id / commit-id ) 
+variant-g = "g" ":" repo-id
+variant-j = "j" ":" object-id
+variant-v = "v" ":" overlay-id
+variant-l = "l" ":" locator
+variant-y = "y" ":" topic-id
+variant-k = "k" ":" commit-key
+variant-r = "r" ":" read-cap
+variant-n = "n" ":" read-token
+variant-s = "s" ":" perma-cap
+user-id = pubkey
+repo-id = pubkey
+commit-id = digest
+object-id = digest
+topic-id = digest
+commit-key = symkey
+read-cap = pubkey-and-digest
+read-token = digest
+permap-cap = 1*base64url-char
+pubkey = 44base64url-char
+symkey = 44base64url-char
+digest = 44base64url-char
+pubkey-and-digest = 87base64url-char
+base64url-char  = ALPHA / DIGIT / "-" / "_"
+```
+
+Note that some variants can also be expressed as DID parameters rather than
+as part of the DID itself (see [DID Parameters](#did-parameters)).
 
 **Examples of `did:ng`:**
 
