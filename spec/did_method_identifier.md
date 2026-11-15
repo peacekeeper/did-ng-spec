@@ -79,7 +79,7 @@ did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
 DID identifying a document (`:o:`) with an overlay (`:v:`):
 
 ```
-did:ng:o:j7sAsZNRibsTWEcLtMpYBBGwMAwkmjNNzCnuvtt7AkUA:v:4gBmGObzB_N3Bwieous7TP1DyXAelpK6aauVyxf4xcMA```
+did:ng:o:j7sAsZNRibsTWEcLtMpYBBGwMAwkmjNNzCnuvtt7AkUA:v:4gBmGObzB_N3Bwieous7TP1DyXAelpK6aauVyxf4xcMA
 ```
 
 DID combining multiple variants (note: newlines are for display purposes only, the DID is one continuous string):
