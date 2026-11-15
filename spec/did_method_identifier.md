@@ -82,8 +82,14 @@ DID identifying a document (`:o:`) with an overlay (`:v:`):
 did:ng:o:j7sAsZNRibsTWEcLtMpYBBGwMAwkmjNNzCnuvtt7AkUA:v:4gBmGObzB_N3Bwieous7TP1DyXAelpK6aauVyxf4xcMA```
 ```
 
-DID combining multiple variants:
+DID combining multiple variants (note: newlines are for display purposes only, the DID is one continuous string):
 
 ```
-did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA:v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA:c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA:k:BIKTgk0WoYR6zyDWWw0770b9WdKY3zuqdWQcsyVmgMAA:s:-Q_t0a_p3v6hoMCu3fn83FAUD14w04xPEYnSf3Fv8hQA:k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA:l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
+did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA
+    :v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA
+    :c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA
+    :k:BIKTgk0WoYR6zyDWWw0770b9WdKY3zuqdWQcsyVmgMAA
+    :s:-Q_t0a_p3v6hoMCu3fn83FAUD14w04xPEYnSf3Fv8hQA
+    :k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA
+    :l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
 ```
