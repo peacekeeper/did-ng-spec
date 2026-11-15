@@ -56,7 +56,7 @@ did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
     "https://w3id.org/security/suites/ed25519-2020/v1"
   ],
   "id": "did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA",
-  "type": "ProtectedGroup",
+  "type": "ProtectedStore",
   "verificationMethod": [
     {
       "id": "did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA#key-1",
