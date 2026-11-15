@@ -77,7 +77,8 @@ with the following design goals and properties:</p>
 DIDs using this method can be used for Nextgraph.
 See <a path-0="nextgraph.org"path-1=""href="https://nextgraph.org/" ><span>https://nextgraph.org/</span></a> for more details about Nextgraph.</p>
 <p>The <code>did:ng</code> method is based on the Nextgraph platform, which uses the DID method for
-identifying</p>
+identifying users, groups, documents, and various other concepts and objects in the
+Nextgraph architecture and protocol.</p>
 <h2 id="identifier"><a class="toc-anchor" href="#identifier" >§</a> Identifier</h2>
 <h3 id="target-system"><a class="toc-anchor" href="#target-system" >§</a> Target System</h3>
 <p>The target system of the <code>did:ng</code> DID method is the Nextgraph platform, which is
@@ -177,10 +178,16 @@ the W3C DID Core standard.</p>
 <pre><code>did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
 </code></pre>
 <p>DID identifying a document (<code>:o:</code>) with an overlay (<code>:v:</code>):</p>
-<pre><code>did:ng:o:j7sAsZNRibsTWEcLtMpYBBGwMAwkmjNNzCnuvtt7AkUA:v:4gBmGObzB_N3Bwieous7TP1DyXAelpK6aauVyxf4xcMA```
+<pre><code>did:ng:o:j7sAsZNRibsTWEcLtMpYBBGwMAwkmjNNzCnuvtt7AkUA:v:4gBmGObzB_N3Bwieous7TP1DyXAelpK6aauVyxf4xcMA
 </code></pre>
-<p>DID combining multiple variants:</p>
-<pre><code>did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA:v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA:c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA:k:BIKTgk0WoYR6zyDWWw0770b9WdKY3zuqdWQcsyVmgMAA:s:-Q_t0a_p3v6hoMCu3fn83FAUD14w04xPEYnSf3Fv8hQA:k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA:l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
+<p>DID combining multiple variants (note: newlines are for display purposes only, the DID is one continuous string):</p>
+<pre><code>did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA
+    :v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA
+    :c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA
+    :k:BIKTgk0WoYR6zyDWWw0770b9WdKY3zuqdWQcsyVmgMAA
+    :s:-Q_t0a_p3v6hoMCu3fn83FAUD14w04xPEYnSf3Fv8hQA
+    :k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA
+    :l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
 </code></pre>
 <h2 id="did-method-operations"><a class="toc-anchor" href="#did-method-operations" >§</a> DID Method Operations</h2>
 <h3 id="create-register"><a class="toc-anchor" href="#create-register" >§</a> Create (Register)</h3>
@@ -210,17 +217,17 @@ methods and other technical metadata about a subject, they also directly identif
 specific types of resources in graph, and they carry semantics about these resources within
 the identifier itself. During resolution, this is reflected by including a <code>type</code> property
 in the resolved DID document.</p>
-<p><strong>Example Request to resolve a DID over HTTPS binding, with <code>did:ng:i</code> variant identifier:</strong></p>
-<pre><code>HTTP GET to https://uniresolver.io/1.0/identifiers/did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
+<p><strong>Example DID with <code>did:ng:i</code> variant identifier:</strong></p>
+<pre><code>did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
 </code></pre>
-<p><strong>Example Response:</strong></p>
+<p><strong>Example DID document:</strong></p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"@context"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"https://www.w3.org/ns/did/v1"</span><span class="token punctuation">,</span>
     <span class="token string">"https://w3id.org/security/suites/ed25519-2020/v1"</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA"</span><span class="token punctuation">,</span>
-  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"ProtectedGroup"</span><span class="token punctuation">,</span>
+  <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"ProtectedStore"</span><span class="token punctuation">,</span>
   <span class="token property">"verificationMethod"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       <span class="token property">"id"</span><span class="token operator">:</span> <span class="token string">"did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA#key-1"</span><span class="token punctuation">,</span>
@@ -237,10 +244,16 @@ in the resolved DID document.</p>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><strong>Example Request to resolve a DID over HTTPS binding, with <code>did:ng:o</code> variant identifier:</strong></p>
-<pre><code>HTTP GET to https://uniresolver.io/1.0/identifiers/did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA:v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA:c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA:k:BIKTgk0WoYR6zyDWWw0770b9WdKY3zuqdWQcsyVmgMAA:s:-Q_t0a_p3v6hoMCu3fn83FAUD14w04xPEYnSf3Fv8hQA:k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA:l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
+<p><strong>Example DID with <code>did:ng:o</code> variant identifier:</strong> (note: newlines are for display purposes only, the DID is one continuous string)</p>
+<pre><code>did:ng:o:t9BlAm27i3IPG0a7GQziVtoInABr96vzjBrk2db_r1QA
+    :v:2oNpTmCKXjK45kmPrgUPv0FVsL5avs92vUzYqZBb6LcA
+    :c:CiA412QJHo8VnRi3TGcmdO_WUSPeLy7Se_Irj2ymhPoA
+    :k:BIKTgk0WoYR6zyDWWw0770b9WdKY3zuqdWQcsyVmgMAA
+    :s:-Q_t0a_p3v6hoMCu3fn83FAUD14w04xPEYnSf3Fv8hQA
+    :k:ozwE0_R_ekcxY_eYKUSijbyTiisDfnORJelFq_OsK0IA
+    :l:AAEBBAxuZXh0Z3JhcGguZXUAAAAAAAuPyIt2ThWdpC8Dlo6MnE4e3hWE_2StcUM1_wCt_pktAA
 </code></pre>
-<p><strong>Example Response:</strong></p>
+<p><strong>Example DID document:</strong></p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"@context"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token string">"https://www.w3.org/ns/did/v1"</span><span class="token punctuation">,</span>
