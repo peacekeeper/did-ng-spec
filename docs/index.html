@@ -112,11 +112,13 @@ base64-url strings.</p>
 high level, but leaves parsing and processing of specific variants to the application.
 This ABNF notation is expected to be stable in the long term, even when variants are added
 over time:</p>
-<pre class="language-abnf"><code class="language-abnf"><span class="token definition keyword">ng-did</span> <span class="token operator">=</span> <span class="token string">"did:ng:"</span> <span class="token rule">variant-id</span> <span class="token string">":"</span> <span class="token rule">variant-data</span> <span class="token repetition operator">*</span><span class="token punctuation">(</span> <span class="token string">":"</span> <span class="token rule">variant-id</span> <span class="token string">":"</span> <span class="token rule">variant-data</span> <span class="token punctuation">)</span>
-<span class="token definition keyword">variant-id</span> <span class="token operator">=</span> <span class="token string">"a"</span> <span class="token operator">/</span> <span class="token string">"b"</span> <span class="token operator">/</span> <span class="token string">"c"</span> <span class="token operator">/</span> <span class="token string">"g"</span> <span class="token operator">/</span> <span class="token string">"o"</span> <span class="token operator">/</span> ...
+<pre class="language-abnf"><code class="language-abnf"><span class="token definition keyword">ng-did</span> <span class="token operator">=</span> <span class="token string">"did:ng:"</span> <span class="token rule">variant</span> <span class="token repetition operator">*</span><span class="token punctuation">(</span> <span class="token string">":"</span> <span class="token rule">variant-data</span> <span class="token punctuation">)</span>
+<span class="token definition keyword">variant</span> <span class="token operator">=</span> <span class="token rule">variant-id</span> <span class="token string">":"</span> <span class="token rule">variant-data</span>
+<span class="token definition keyword">variant-id</span> <span class="token operator">=</span> <span class="token rule">lower-char</span>
 <span class="token definition keyword">variant-data</span> <span class="token operator">=</span> <span class="token rule">versioned-byte-array</span>
 <span class="token definition keyword">versioned-byte-array</span> <span class="token operator">=</span> <span class="token repetition operator">1*</span><span class="token rule">base64url-char</span>
-<span class="token definition keyword">base64url-char</span>  <span class="token operator">=</span> <span class="token core-rule rule constant">ALPHA</span> <span class="token operator">/</span> <span class="token core-rule rule constant">DIGIT</span> <span class="token operator">/</span> <span class="token string">"-"</span> <span class="token operator">/</span> <span class="token string">"_"</span>
+<span class="token definition keyword">lower-char</span> <span class="token operator">=</span> <span class="token range number">%x61-7A</span>
+<span class="token definition keyword">base64url-char</span> <span class="token operator">=</span> <span class="token core-rule rule constant">ALPHA</span> <span class="token operator">/</span> <span class="token core-rule rule constant">DIGIT</span> <span class="token operator">/</span> <span class="token string">"-"</span> <span class="token operator">/</span> <span class="token string">"_"</span>
 </code></pre>
 <p>The following table lists common variants of DIDs:</p>
 <table>
@@ -239,17 +241,17 @@ and expresses details of all currently known variants:</p>
 <span class="token definition keyword">commit-id</span> <span class="token operator">=</span> <span class="token rule">digest</span>
 <span class="token definition keyword">object-id</span> <span class="token operator">=</span> <span class="token rule">digest</span>
 <span class="token definition keyword">overlay-id</span> <span class="token operator">=</span> <span class="token rule">digest</span>
-<span class="token definition keyword">locator</span> <span class="token operator">=</span> <span class="token rule">byte-array</span>
+<span class="token definition keyword">locator</span> <span class="token operator">=</span> <span class="token rule">versioned-byte-array</span>
 <span class="token definition keyword">topic-id</span> <span class="token operator">=</span> <span class="token rule">digest</span>
 <span class="token definition keyword">commit-key</span> <span class="token operator">=</span> <span class="token rule">symkey</span>
 <span class="token definition keyword">read-cap</span> <span class="token operator">=</span> <span class="token rule">pubkey-and-digest</span>
 <span class="token definition keyword">read-token</span> <span class="token operator">=</span> <span class="token rule">digest</span>
-<span class="token definition keyword">permap-cap</span> <span class="token operator">=</span> <span class="token rule">byte-array</span>
+<span class="token definition keyword">permap-cap</span> <span class="token operator">=</span> <span class="token rule">versioned-byte-array</span>
 <span class="token definition keyword">pubkey</span> <span class="token operator">=</span> <span class="token repetition operator">44</span><span class="token rule">base64url-char</span>
 <span class="token definition keyword">symkey</span> <span class="token operator">=</span> <span class="token repetition operator">44</span><span class="token rule">base64url-char</span>
 <span class="token definition keyword">digest</span> <span class="token operator">=</span> <span class="token repetition operator">44</span><span class="token rule">base64url-char</span>
 <span class="token definition keyword">pubkey-and-digest</span> <span class="token operator">=</span> <span class="token repetition operator">87</span><span class="token rule">base64url-char</span>
-<span class="token definition keyword">byte-array</span> <span class="token operator">=</span> <span class="token repetition operator">1*</span><span class="token rule">base64url-char</span>
+<span class="token definition keyword">versioned-byte-array</span> <span class="token operator">=</span> <span class="token repetition operator">1*</span><span class="token rule">base64url-char</span>
 <span class="token definition keyword">base64url-char</span>  <span class="token operator">=</span> <span class="token core-rule rule constant">ALPHA</span> <span class="token operator">/</span> <span class="token core-rule rule constant">DIGIT</span> <span class="token operator">/</span> <span class="token string">"-"</span> <span class="token operator">/</span> <span class="token string">"_"</span>
 </code></pre>
 <p>Note that some variants can also be expressed as DID parameters rather than

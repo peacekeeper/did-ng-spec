@@ -45,11 +45,13 @@ This ABNF notation is expected to be stable in the long term, even when variants
 over time:
 
 ```abnf
-ng-did = "did:ng:" variant-id ":" variant-data *( ":" variant-id ":" variant-data )
-variant-id = "a" / "b" / "c" / "g" / "o" / ...
+ng-did = "did:ng:" variant *( ":" variant-data )
+variant = variant-id ":" variant-data
+variant-id = lower-char
 variant-data = versioned-byte-array
 versioned-byte-array = 1*base64url-char
-base64url-char  = ALPHA / DIGIT / "-" / "_"
+lower-char = %x61-7A
+base64url-char = ALPHA / DIGIT / "-" / "_"
 ```
 
 The following table lists common variants of DIDs:
@@ -112,17 +114,17 @@ repo-id = pubkey
 commit-id = digest
 object-id = digest
 overlay-id = digest
-locator = byte-array
+locator = versioned-byte-array
 topic-id = digest
 commit-key = symkey
 read-cap = pubkey-and-digest
 read-token = digest
-permap-cap = byte-array
+permap-cap = versioned-byte-array
 pubkey = 44base64url-char
 symkey = 44base64url-char
 digest = 44base64url-char
 pubkey-and-digest = 87base64url-char
-byte-array = 1*base64url-char
+versioned-byte-array = 1*base64url-char
 base64url-char  = ALPHA / DIGIT / "-" / "_"
 ```
 
