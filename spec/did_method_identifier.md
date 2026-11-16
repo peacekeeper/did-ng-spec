@@ -135,7 +135,7 @@ base64url-char  = ALPHA / DIGIT / "-" / "_"
 Note that some variants can also be expressed as DID parameters rather than
 as part of the DID itself (see [DID Parameters](#did-parameters)).
 
-**Examples of `did:ng`:**
+### Examples
 
 DID identifying a public store (`:a:`):
 
