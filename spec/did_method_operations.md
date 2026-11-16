@@ -109,7 +109,7 @@ Resolved DID document:
     "https://www.w3.org/ns/did/v1.1",
   ],
   "id": "did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA",
-  "type": "ProtectedStore",
+  "type": "PublicStore",
   "verificationMethod": [
     {
       "id": "did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA#key-1",
