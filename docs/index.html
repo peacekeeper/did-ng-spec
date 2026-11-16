@@ -207,7 +207,7 @@ over time:</p>
 </tr>
 </tbody>
 </table>
-<div id="todo-17" class="notice todo"><a class="notice-link" href="#todo-17">TODO</a><p>Add a column with the actual data type, e.g. pubkey, symkey, digest.</p>
+<div id="todo-1" class="notice todo"><a class="notice-link" href="#todo-1">TODO</a><p>Add a column with the actual data type, e.g. pubkey, symkey, digest.</p>
 </div>
 <div id="variant-semantics" class="notice note"><a class="notice-link" href="#variant-semantics">NOTE</a><p>The variant identifier not only indicates the content of the variant-specific data
 and subsequent structure of the identifier, but also carries semantics about the resource
@@ -231,7 +231,7 @@ and expresses details of all currently known variants:</p>
 <span class="token definition keyword">variant-c</span> <span class="token operator">=</span> <span class="token string">"c"</span> <span class="token string">":"</span> <span class="token punctuation">(</span> <span class="token rule">repo-id</span> <span class="token operator">/</span> <span class="token rule">commit-id</span> <span class="token punctuation">)</span> 
 <span class="token definition keyword">variant-g</span> <span class="token operator">=</span> <span class="token string">"g"</span> <span class="token string">":"</span> <span class="token rule">repo-id</span>
 <span class="token definition keyword">variant-j</span> <span class="token operator">=</span> <span class="token string">"j"</span> <span class="token string">":"</span> <span class="token rule">object-id</span>
-<span class="token definition keyword">variant-v</span> <span class="token operator">=</span> <span class="token string">"v"</span> <span class="token string">":"</span> <span class="token rule">overlay-id</span>#<span class="token rule">method-specific-identifier</span>
+<span class="token definition keyword">variant-v</span> <span class="token operator">=</span> <span class="token string">"v"</span> <span class="token string">":"</span> <span class="token rule">overlay-id</span>
 <span class="token definition keyword">variant-l</span> <span class="token operator">=</span> <span class="token string">"l"</span> <span class="token string">":"</span> <span class="token rule">locator</span>
 <span class="token definition keyword">variant-y</span> <span class="token operator">=</span> <span class="token string">"y"</span> <span class="token string">":"</span> <span class="token rule">topic-id</span>
 <span class="token definition keyword">variant-k</span> <span class="token operator">=</span> <span class="token string">"k"</span> <span class="token string">":"</span> <span class="token rule">commit-key</span>
@@ -317,7 +317,7 @@ of tuples, each consisting of a <strong>variant identifier</strong> (<code>varia
 <pre><code>did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
 </code></pre>
 <p><strong>Example 2: Multiple variants</strong></p>
-<div id="todo-18" class="notice todo"><a class="notice-link" href="#todo-18">TODO</a><p>Add more complex examples using a sequence of variants.</p>
+<div id="todo-2" class="notice todo"><a class="notice-link" href="#todo-2">TODO</a><p>Add more complex examples using a sequence of variants.</p>
 </div>
 <h3 id="read-resolve"><a class="toc-anchor" href="#read-resolve" >§</a> Read (Resolve)</h3>
 <p>To resolve a <code>did:ng</code>, the <a path-0="www.w3.org"path-1="TR"path-2="did-resolution"path-3="#resolving"href="https://www.w3.org/TR/did-resolution/#resolving" ><code>resolve()</code> function</a> of the
@@ -364,10 +364,10 @@ encoded using [[multicodec]].</li>
 </ol>
 </li>
 </ol>
-<div id="todo-19" class="notice todo"><a class="notice-link" href="#todo-19">TODO</a><p>Add more information about the value of the <code>type</code> property, and potentially additional
+<div id="todo-3" class="notice todo"><a class="notice-link" href="#todo-3">TODO</a><p>Add more information about the value of the <code>type</code> property, and potentially additional
 properties to be added to the DID document depending on the variant.</p>
 </div>
-<div id="todo-20" class="notice todo"><a class="notice-link" href="#todo-20">TODO</a><p>Fix reference to multibase/multicodec spec, and provide more details.</p>
+<div id="todo-4" class="notice todo"><a class="notice-link" href="#todo-4">TODO</a><p>Fix reference to multibase/multicodec spec, and provide more details.</p>
 </div>
 <div id="identifier-semantics" class="notice note"><a class="notice-link" href="#identifier-semantics">NOTE</a><p>DIDs using the <code>did:ng</code> method are not only used for discovering cryptographic verification
 methods and other technical metadata about a subject, they also directly identify
@@ -402,7 +402,7 @@ in the resolved DID document.</p>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<div id="todo-21" class="notice todo"><a class="notice-link" href="#todo-21">TODO</a><p>Update above example to contain correct <code>publicKeyMultibase</code> value
+<div id="todo-5" class="notice todo"><a class="notice-link" href="#todo-5">TODO</a><p>Update above example to contain correct <code>publicKeyMultibase</code> value
 that actually corresponds to the method-specific identifier.</p>
 </div>
 <p><strong>Example 2: DID with <code>did:ng:o</code> variant identifier:</strong> (note: newlines are for display purposes only, the DID is one continuous string)</p>
@@ -553,7 +553,7 @@ in this specification as permitted.</dd>
 <dd>A Verifiable Credential that uses the Data Model defined by the W3C [[spec: W3C-VC]] specification.</dd>
 </dl>
 <h2 id="references"><a class="toc-anchor" href="#references" >§</a> References</h2>
-<div id="todo-22" class="notice todo"><a class="notice-link" href="#todo-22">TODO</a><p>Fix reference throughout the spec.</p>
+<div id="todo-6" class="notice todo"><a class="notice-link" href="#todo-6">TODO</a><p>Fix reference throughout the spec.</p>
 </div>
 <p>
 <dl class="reference-list">
