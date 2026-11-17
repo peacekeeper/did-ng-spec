@@ -118,9 +118,6 @@ Resolved DID document:
       "publicKeyMultibase": "z6MkExamplePublicKeyMaterial"
     }
   ],
-  "authentication": [
-    "did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA#key-1"
-  ],
   "assertionMethod": [
     "did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA#key-1"
   ]
@@ -130,6 +127,11 @@ Resolved DID document:
 ::: todo
 Update above example to contain correct `publicKeyMultibase` value
 that actually corresponds to the method-specific identifier.
+:::
+
+::: todo
+Add example for `:i:` to show that it includes the `authentication`
+verification relationship.
 :::
 
 **Example 2: DID with `did:ng:o` variant identifier:** (note: newlines are for display purposes only, the DID is one continuous string)
