@@ -108,7 +108,7 @@ which is zero at the moment. The byte array is reversed and encoded as
 base64-url strings.</p>
 <p>The syntax is specified in two ways, using the Augmented Backus-Naur Form (ABNF) notation
 [<a class="spec-reference" href="#ref:RFC2234">RFC2234</a>].</p>
-<p>The first notation is a simplified syntax that expresses the concept of variants on a
+<p>The first ABNF notation is a simplified syntax that expresses the concept of variants on a
 high level, but leaves parsing and processing of specific variants to the application.
 This ABNF notation is expected to be stable in the long term, even when variants are added
 over time:</p>
@@ -207,7 +207,7 @@ over time:</p>
 </tr>
 </tbody>
 </table>
-<div id="todo-32" class="notice todo"><a class="notice-link" href="#todo-32">TODO</a><p>Add a column with the actual data type, e.g. pubkey, symkey, digest.</p>
+<div id="todo-1" class="notice todo"><a class="notice-link" href="#todo-1">TODO</a><p>Add a column with the actual data type, e.g. pubkey, symkey, digest.</p>
 </div>
 <div id="variant-semantics" class="notice note"><a class="notice-link" href="#variant-semantics">NOTE</a><p>The variant identifier not only indicates the content of the variant-specific data
 and subsequent structure of the identifier, but also carries semantics about the resource
@@ -317,7 +317,7 @@ of tuples, each consisting of a <strong>variant identifier</strong> (<code>varia
 <pre><code>did:ng:a:rjoQTS4LMBDcuh8CEjmTYrgALeApBg2cgKqyPEuQDUgA
 </code></pre>
 <p><strong>Example 2: Multiple variants</strong></p>
-<div id="todo-33" class="notice todo"><a class="notice-link" href="#todo-33">TODO</a><p>Add more complex examples using a sequence of variants.</p>
+<div id="todo-2" class="notice todo"><a class="notice-link" href="#todo-2">TODO</a><p>Add more complex examples using a sequence of variants.</p>
 </div>
 <h3 id="read-resolve"><a class="toc-anchor" href="#read-resolve" >§</a> Read (Resolve)</h3>
 <p>To resolve a <code>did:ng</code>, the <a path-0="www.w3.org"path-1="TR"path-2="did-resolution"path-3="#resolving"href="https://www.w3.org/TR/did-resolution/#resolving" ><code>resolve()</code> function</a> of the
@@ -364,14 +364,14 @@ encoded using [[multicodec]].</li>
 </ol>
 </li>
 </ol>
-<div id="todo-34" class="notice todo"><a class="notice-link" href="#todo-34">TODO</a><p>Add more information about the value of the <code>type</code> property, and potentially additional
+<div id="todo-3" class="notice todo"><a class="notice-link" href="#todo-3">TODO</a><p>Add more information about the value of the <code>type</code> property, and potentially additional
 properties to be added to the DID document depending on the variant.</p>
 </div>
-<div id="todo-35" class="notice todo"><a class="notice-link" href="#todo-35">TODO</a><p>Fix reference to multibase/multicodec spec, and provide more details.</p>
+<div id="todo-4" class="notice todo"><a class="notice-link" href="#todo-4">TODO</a><p>Fix reference to multibase/multicodec spec, and provide more details.</p>
 </div>
 <div id="identifier-semantics" class="notice note"><a class="notice-link" href="#identifier-semantics">NOTE</a><p>DIDs using the <code>did:ng</code> method are not only used for discovering cryptographic verification
 methods and other technical metadata about a subject, they also directly identify
-specific types of resources in graph, and they carry semantics about these resources within
+specific types of resources in Nextgraph, and they carry semantics about these resources within
 the identifier itself. During resolution, this is reflected by including a <code>type</code> property
 in the resolved DID document.</p>
 </div>
@@ -402,7 +402,7 @@ in the resolved DID document.</p>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<div id="todo-36" class="notice todo"><a class="notice-link" href="#todo-36">TODO</a><p>Update above example to contain correct <code>publicKeyMultibase</code> value
+<div id="todo-5" class="notice todo"><a class="notice-link" href="#todo-5">TODO</a><p>Update above example to contain correct <code>publicKeyMultibase</code> value
 that actually corresponds to the method-specific identifier.</p>
 </div>
 <p><strong>Example 2: DID with <code>did:ng:o</code> variant identifier:</strong> (note: newlines are for display purposes only, the DID is one continuous string)</p>
@@ -503,7 +503,7 @@ the DID itself does not change, which indicates that the concept or object
 identified by the DID is still the same, only the information needed to access
 it has changed.</p>
 <h2 id="security-and-privacy-considerations"><a class="toc-anchor" href="#security-and-privacy-considerations" >§</a> Security and Privacy Considerations</h2>
-<div id="todo-37" class="notice todo"><a class="notice-link" href="#todo-37">TODO</a><p>Add Security and Privacy Considerations</p>
+<div id="todo-6" class="notice todo"><a class="notice-link" href="#todo-6">TODO</a><p>Add Security and Privacy Considerations</p>
 </div>
 <h2 id="definitions"><a class="toc-anchor" href="#definitions" >§</a> Definitions</h2>
 <dl>
@@ -554,7 +554,7 @@ in this specification as permitted.</dd>
 <dd>A Verifiable Credential that uses the Data Model defined by the W3C [[spec: W3C-VC]] specification.</dd>
 </dl>
 <h2 id="references"><a class="toc-anchor" href="#references" >§</a> References</h2>
-<div id="todo-38" class="notice todo"><a class="notice-link" href="#todo-38">TODO</a><p>Fix reference throughout the spec.</p>
+<div id="todo-7" class="notice todo"><a class="notice-link" href="#todo-7">TODO</a><p>Fix reference throughout the spec.</p>
 </div>
 <p>
 <dl class="reference-list">
