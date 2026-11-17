@@ -39,7 +39,7 @@ base64-url strings.
 The syntax is specified in two ways, using the Augmented Backus-Naur Form (ABNF) notation
 [[spec:rfc2234]].
 
-The first notation is a simplified syntax that expresses the concept of variants on a
+The first ABNF notation is a simplified syntax that expresses the concept of variants on a
 high level, but leaves parsing and processing of specific variants to the application.
 This ABNF notation is expected to be stable in the long term, even when variants are added
 over time:
