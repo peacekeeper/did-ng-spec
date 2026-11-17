@@ -88,7 +88,7 @@ Fix reference to multibase/multicodec spec, and provide more details.
 ::: note Identifier Semantics
 DIDs using the `did:ng` method are not only used for discovering cryptographic verification
 methods and other technical metadata about a subject, they also directly identify
-specific types of resources in graph, and they carry semantics about these resources within
+specific types of resources in Nextgraph, and they carry semantics about these resources within
 the identifier itself. During resolution, this is reflected by including a `type` property
 in the resolved DID document.
 :::
